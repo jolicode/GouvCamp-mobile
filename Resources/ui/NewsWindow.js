@@ -1,3 +1,5 @@
+// some code here shamelessly borrowed from the CodeStrong app
+// https://github.com/appcelerator/Codestrong/blob/master/Resources/cs/ui.js
 function NewsWindow(dic) {
     var joli = dic.joli;
     var helper = dic.helper;
@@ -95,6 +97,13 @@ function NewsWindow(dic) {
 
         // load the content for each tab
         controller.update(item);
+    });
+
+    // synchronize back the tabbed bar
+    scrollable.addEventListener('scroll', function(e) {
+        if(e.view) {
+            configuration[e.currentPage].tabView.fireEvent('click');
+        }
     });
 
     self.add(tabbedBar);

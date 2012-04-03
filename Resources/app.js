@@ -17,25 +17,34 @@ if(Ti.version < 1.8) {
     var model = new Model(dic);
     dic.joli.models.initialize();
 
-            dic.joli.models.get('conference').truncate();
-            dic.joli.models.get('conference_speaker').truncate();
-            dic.joli.models.get('table_updates').truncate();
-            dic.joli.models.get('speaker').truncate();
+    // in debug we want to make some cleanup when launching the app...
+/*  dic.joli.models.get('attendee').truncate();
+    dic.joli.models.get('conference').truncate();
+    dic.joli.models.get('conference_speaker').truncate();
+    dic.joli.models.get('table_updates').truncate();
+    dic.joli.models.get('speaker').truncate();
 
-            dic.joli.models.get('speaker').forceReload();
-            dic.joli.models.get('conference').forceReload();
+    dic.joli.models.get('speaker').forceReload();
+    dic.joli.models.get('conference').forceReload();
+*/
 
     var first_update = dic.joli.models.get('conference').getFirstUpdate();
 
     if(Titanium.Network.online && first_update) {
         var now = new Date().getTime();
 
-        if(first_update < now - 86400) {
+        if(first_update < now - 86400 * 1000) {
             // truncate if the data are older than 1 day
+            dic.joli.models.get('attendee').truncate();
             dic.joli.models.get('conference').truncate();
             dic.joli.models.get('conference_speaker').truncate();
             dic.joli.models.get('table_updates').truncate();
             dic.joli.models.get('speaker').truncate();
+
+            // and reload it !
+            dic.joli.models.get('attendee').forceReload();
+            dic.joli.models.get('speaker').forceReload();
+            dic.joli.models.get('conference').forceReload();
         }
     }
 

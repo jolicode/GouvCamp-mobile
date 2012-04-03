@@ -3,6 +3,7 @@ function TabGroup(dic, id) {
 
     // load tab dependancies
     var ScheduleWindow = require('ui/ScheduleWindow');
+    var AttendeesWindow = require('ui/AttendeesWindow');
     var SpeakersWindow = require('ui/SpeakersWindow');
     var NewsWindow = require('ui/NewsWindow');
     var MapWindow = require('ui/MapWindow');
@@ -14,7 +15,7 @@ function TabGroup(dic, id) {
     //create app windows
     var wins = [
       new ScheduleWindow(dic),
-      new SpeakersWindow(dic),
+      new AttendeesWindow(dic),
       new NewsWindow(dic),
       new MapWindow(dic),
       new AboutWindow(dic),
@@ -29,8 +30,8 @@ function TabGroup(dic, id) {
         window: wins[0]
     }));
     tabs.push(Titanium.UI.createTab({
-        icon: '/images/icons/speaker.png',
-        title: 'Conférenciers',
+        icon: '/images/icons/attendees.png',
+        title: 'Participants',
         window: wins[1]
     }));
     tabs.push(Titanium.UI.createTab({

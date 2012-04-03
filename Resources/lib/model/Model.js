@@ -2,6 +2,41 @@ function Model(dic) {
     var joli = dic.joli;
     var m = {};
 
+    var attendeeSaveRecords = function(items) {
+        var i = 0;
+        var new_count = 0;
+        var updated_count = 0;
+        items = joli.jsonParse(items);
+        items = items['attendees'];
+        table = joli.models.get(this.table);
+
+        // create transaction
+//        var transaction = new joli.transaction();
+//        transaction.begin();
+
+        while(i < items.length) {
+            var item = items[i]['attendee'];
+            if(!table.exists(item.id)) {
+                table.newRecord(item).save();
+                new_count++;
+            } else {
+                // update the record
+                var record = table.findOneById(item.id);
+                record.fromArray(item).save();
+                updated_count++;
+            }
+            i++;
+        }
+
+//        transaction.commit();
+
+        Ti.App.fireEvent('joli.records.saved', {
+            table: table.table,
+            nb_new: new_count,
+            nb_updated: updated_count
+        });
+    };
+
     var conferenceNewRecord = function(values) {
         if(!values) {
             values = {};
@@ -36,6 +71,25 @@ function Model(dic) {
 
         return record;
     };
+
+    m.attendee = new joli.apimodel({
+        table: 'attendee',
+        columns: {
+            id: 'INTEGER PRIMARY KEY',
+            first_name: 'TEXT',
+            last_name: 'TEXT',
+            company: 'TEXT',
+            job_title: 'TEXT'
+        },
+        objectMethods: {
+            getFullName: function() {
+                return this.first_name + ' ' + this.last_name.toUpperCase();
+            }
+        },
+        saveRecords: attendeeSaveRecords,
+        url: 'https://www.eventbrite.com/json/event_list_attendees?app_key=5H6JUD36UAT56RETBX&id=3143715939'
+    });
+
     // conference model
     m.conference = new joli.apimodel({
         table: 'conference',
@@ -82,7 +136,7 @@ function Model(dic) {
                 return new joli.query().select('conference.*').from('conference').join('conference_speaker', 'conference_speaker.conference_id', 'conference.id').where('conference_speaker.speaker_id = ?', this.id).order('start_at asc').execute();
             },
             getFullName: function() {
-                return this.first_name + ' ' + this.last_name;
+                return this.first_name + ' ' + this.last_name.toUpperCase();
             }
         },
         url: Titanium.App.Properties.getString('api_url') + 'speaker.json.php'

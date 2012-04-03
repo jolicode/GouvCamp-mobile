@@ -21,8 +21,8 @@ function HomeView(dic) {
       },
       {
           id: 1,
-          title: 'CONFÉRENCIERS',
-          image: '/images/icons/speaker_dark.png'
+          title: 'PARTICIPANTS',
+          image: '/images/icons/attendees_dark.png'
       },
       {
           id: 2,
