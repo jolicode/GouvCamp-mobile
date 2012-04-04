@@ -11,10 +11,10 @@ function AboutWindow(dic) {
     };
     var configuration = [{
         title: 'Parlement et citoyens',
-        view: new AboutView('http://parlement-et-citoyens.fr/parlement-et-citoyens')
+        view: new AboutView('http://parlement-et-citoyens.fr/mobile-explication')
     }, {
         title: 'Partenaires',
-        view: new AboutView('http://parlement-et-citoyens.fr/soutien')
+        view: new AboutView('http://parlement-et-citoyens.fr/mobile-soutien')
     }];
 
     // some preparation...
@@ -72,21 +72,22 @@ function AboutWindow(dic) {
         tabView.add(tabLabel);
 
         tabView.addEventListener('click', function(e) {
-            var index = e.source.index;
+            if(e.source) {
+                var index = e.source.index;
 
-            joli.each(configuration, function(tab, j) {
-                tab.tabView.backgroundColor = (index == j) ? colors.selected : colors.unselected;
-                var labels = tab.tabView.getChildren();
-                labels[0].color = (index == j) ? colors.unselected : colors.selected;
-            });
+                joli.each(configuration, function(tab, j) {
+                    tab.tabView.backgroundColor = (index == j) ? colors.selected : colors.unselected;
+                    var labels = tab.tabView.getChildren();
+                    labels[0].color = (index == j) ? colors.unselected : colors.selected;
+                });
 
-            scrollable.scrollToView(configuration[index].view);
+                scrollable.scrollToView(configuration[index].view);
+            }
         });
 
         tabbedBar.add(tabView);
         configuration[i].tabView = tabView;
     });
-
     // synchronize back the tabbed bar
     scrollable.addEventListener('scroll', function(e) {
         if(e.view) {

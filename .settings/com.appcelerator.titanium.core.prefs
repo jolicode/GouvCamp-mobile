@@ -1,0 +1,10 @@
+#Wed Apr 04 01:48:55 CEST 2012
+eclipse.preferences.version=1
+provisioning_profiles/development/DD37EB9E-A4D5-4D4B-B0AB-3C51801993CC/appid=com.jolicode.gouvcamp2012
+provisioning_profiles/development/DD37EB9E-A4D5-4D4B-B0AB-3C51801993CC/filepath=/Users/xavier/Documents/projets/developpement/parlement-et-citoyens/gouvcamp/mobile/GouvCamp_xavier.mobileprovision
+provisioning_profiles/development/DD37EB9E-A4D5-4D4B-B0AB-3C51801993CC/name=GouvCamp xavier
+provisioning_profiles/development/DD37EB9E-A4D5-4D4B-B0AB-3C51801993CC/uuid=DD37EB9E-A4D5-4D4B-B0AB-3C51801993CC
+provisioning_profiles/distribution/7C4AF600-2FC6-414D-B6E6-0EF1766F68F6/appid=com.jolicode.gouvcamp2012
+provisioning_profiles/distribution/7C4AF600-2FC6-414D-B6E6-0EF1766F68F6/filepath=/Users/xavier/Documents/projets/developpement/parlement-et-citoyens/gouvcamp/mobile/GouvCamp.mobileprovision
+provisioning_profiles/distribution/7C4AF600-2FC6-414D-B6E6-0EF1766F68F6/name=GouvCamp
+provisioning_profiles/distribution/7C4AF600-2FC6-414D-B6E6-0EF1766F68F6/uuid=7C4AF600-2FC6-414D-B6E6-0EF1766F68F6

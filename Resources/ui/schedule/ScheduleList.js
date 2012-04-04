@@ -5,7 +5,7 @@ function ScheduleList(dic) {
     var self = Titanium.UI.createTableView({
         editable: false,
         moveable: true,
-        top: 0,
+        top: 80,
         backgroundColor: '#fff',
         rowBackgroundColor: 'transparent',
         data: [],

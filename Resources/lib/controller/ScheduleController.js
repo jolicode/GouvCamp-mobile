@@ -37,87 +37,89 @@ function ScheduleController(dic) {
         Titanium.API.log('info', 'Pushing ' + conferences.length + ' conferences.');
 
         while(i < conferences.length) {
-            var row = Ti.UI.createTableViewRow({
-                backgroundColor: '#fff',
-                hasChild: true,
-                className: 'conferenceRow',
-                height: 'auto',
-                layout: 'vertical',
-                conference_id: conferences[i].id
-            });
-            var title = Titanium.UI.createLabel({
-                color: '#3693cc',
-                font: {
-                    fontSize: 16,
-                    fontWeight: 'bold'
-                },
-                height: 'auto',
-                text: conferences[i].title,
-                textAlign: 'left',
-                bottom: 10,
-                top: 10,
-                left: 10,
-                right: 10,
-                touchEnabled: false
-            });
-            row.add(title);
-
-            var speakerNames = self.getSpeakerNames(conferences[i].id);
-
-            if(speakerNames !== '') {
-                var speakers = Titanium.UI.createLabel({
-                    color: '#000',
+            if(conferences[i].title) {
+                var row = Ti.UI.createTableViewRow({
+                    backgroundColor: '#fff',
+                    hasChild: true,
+                    className: 'conferenceRow',
+                    height: 'auto',
+                    layout: 'vertical',
+                    conference_id: conferences[i].id
+                });
+                var title = Titanium.UI.createLabel({
+                    color: '#3693cc',
                     font: {
-                        fontSize: 13,
+                        fontSize: 16,
                         fontWeight: 'bold'
                     },
                     height: 'auto',
-                    text: speakerNames,
-                    textAlign: 'left',
-                    top: 5,
-                    left: 10,
-                    right: 10,
-                    touchEnabled: false
-                });
-                row.add(speakers);
-            }
-
-            if(conferences[i].type == 'debat') {
-                var type = Titanium.UI.createLabel({
-                    color: '#000',
-                    font: {
-                        fontSize: 13
-                    },
-                    height: 'auto',
-                    text: 'Session de débats',
+                    text: conferences[i].title,
                     textAlign: 'left',
                     bottom: 10,
-                    top: 5,
+                    top: 10,
                     left: 10,
                     right: 10,
                     touchEnabled: false
                 });
-                row.add(type);
-            } else if(conferences[i].type == 'atelier') {
-                var type = Titanium.UI.createLabel({
-                    color: '#000',
-                    font: {
-                        fontSize: 13
-                    },
-                    height: 'auto',
-                    text: 'Session d\'atelier sur le projet "Parlement et citoyens"',
-                    textAlign: 'left',
-                    bottom: 10,
-                    top: 5,
-                    left: 10,
-                    right: 10,
-                    touchEnabled: false
-                });
-                row.add(type);
-            }
+                row.add(title);
 
-            data.push(new HeaderRow(dic, conferences[i].start_at + " - " + conferences[i].end_at));
-            data.push(row);
+                var speakerNames = self.getSpeakerNames(conferences[i].id);
+
+                if(speakerNames !== '') {
+                    var speakers = Titanium.UI.createLabel({
+                        color: '#000',
+                        font: {
+                            fontSize: 13,
+                            fontWeight: 'bold'
+                        },
+                        height: 'auto',
+                        text: speakerNames,
+                        textAlign: 'left',
+                        top: 5,
+                        left: 10,
+                        right: 10,
+                        touchEnabled: false
+                    });
+                    row.add(speakers);
+                }
+
+                if(conferences[i].type == 'debat') {
+                    var type = Titanium.UI.createLabel({
+                        color: '#000',
+                        font: {
+                            fontSize: 13
+                        },
+                        height: 'auto',
+                        text: 'Session de débats',
+                        textAlign: 'left',
+                        bottom: 10,
+                        top: 5,
+                        left: 10,
+                        right: 10,
+                        touchEnabled: false
+                    });
+                    row.add(type);
+                } else if(conferences[i].type == 'atelier') {
+                    var type = Titanium.UI.createLabel({
+                        color: '#000',
+                        font: {
+                            fontSize: 13
+                        },
+                        height: 'auto',
+                        text: 'Session d\'atelier sur le projet "Parlement et citoyens"',
+                        textAlign: 'left',
+                        bottom: 10,
+                        top: 5,
+                        left: 10,
+                        right: 10,
+                        touchEnabled: false
+                    });
+                    row.add(type);
+                }
+
+                data.push(new HeaderRow(dic, conferences[i].start_at + " - " + conferences[i].end_at));
+                data.push(row);
+            }
             i++;
         }
 
@@ -137,7 +139,6 @@ function ScheduleController(dic) {
             animated: true
         });
     };
-
     return self;
 }
 
