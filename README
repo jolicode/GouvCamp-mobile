@@ -1,18 +1,26 @@
-Welcome to your Appcelerator Titanium Mobile Project
+GouvCamp Mobile
+===============
 
-This is a blank project.  Start by editing your application's app.js to 
-make your first mobile project using Titanium.
+GouvCamp mobile is an OpenSource [Appcelerator Titanium Mobile](www.appcelerator.com) application built by the guys at [JoliCode](http://jolicode.com/) in the occasion of the [first French GouvCamp](parlement-et-citoyens.fr) which will be held on tuesday, April 10th 2012.
+
+Install and run
+---------------
+
+The project has been tested along with Titanium 1.8.2. Just grab the source:
+
+    $ git checkout git://github.com/xavierlacot/joli.api.js.git
+
+and import it in Titanium Studio. The application runs smoothly on both iOs and Android.
+
+Architecture concepts
+---------------------
+
+The application tries to do the best use of the [CommonJS module pattern](http://www.commonjs.org/), and is divided in three layers - controllers, views and models. It has a dependancy to the ORM [joli.js](https://github.com/xavierlacot/joli.js).
+
+The application fetches several json webservice endpoints, particularly the one of EventBrite, through a proxy called joli.api.js, which uses a local database as a caching engine.
+
+We believe some developers could find interesting ideas in the code, so don't hesitate to go on and look at the source!
 
 
 
-----------------------------------
-Stuff our legal folk make us say:
-
-Appcelerator, Appcelerator Titanium and associated marks and logos are 
-trademarks of Appcelerator, Inc. 
-
-Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc. All Rights Reserved.
-
-Titanium is licensed under the Apache Public License (Version 2). Please
-see the LICENSE file for the full license.
-
+**Share the love!**
