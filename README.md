@@ -9,7 +9,7 @@ Install and run
 
 The project has been tested along with Titanium 1.8.2. Just grab the source:
 
-    $ git checkout git://github.com/xavierlacot/joli.api.js.git
+    $ https://github.com/jolicode/GouvCamp-mobile
 
 and import it in Titanium Studio. The application runs smoothly on both iOs and Android.
 
