@@ -28,8 +28,9 @@ Demonstration
 -------------
 
 Would you like to test it, the application is available in both stores:
- * Google Play: https://play.google.com/store/apps/details?id=com.jolicode.gouvcamp2012
- * Apple Store: Application currently in review (aka. "we are crossing fingers")
+
+*   Google Play: https://play.google.com/store/apps/details?id=com.jolicode.gouvcamp2012
+*   Apple Store: Application currently in review (aka. "we are crossing fingers")
 
 
 
